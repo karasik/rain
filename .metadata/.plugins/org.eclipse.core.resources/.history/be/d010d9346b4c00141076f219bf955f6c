@@ -1,0 +1,24 @@
+package ua.dp.isd.ypys.entities;
+
+import ua.dp.isd.ypys.generating.dungeon.topology.IDungeonTopologyFactory;
+import ua.dp.isd.ypys.generating.dungeon.topology.MazeAutomataFactory;
+
+public class Main
+{
+	private IDungeonTopologyFactory factory = new MazeAutomataFactory();
+	private static final int WIDTH = 200;
+	private static final int HEIGHT = 50;
+
+	public void run()
+	{
+		IMaze maze = factory.createMaze(WIDTH, HEIGHT);
+		System.out.println(maze.toString());
+	}
+
+	public static void main(String[] args)
+	{
+		Main program = new Main();
+		program.run();
+	}
+
+}

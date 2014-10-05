@@ -2,3 +2,6 @@
 1412496626897	Delete element
 1412497178148	Move compilation units
 1412497495931	Rename method 'createBoard'
+1412498364460	Rename type 'IMazeFactory'
+1412498376202	Rename type 'AbstractMazeFactory'
+1412498406014	Rename method 'createMaze'

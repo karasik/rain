@@ -1,0 +1,7 @@
+package ua.dp.isd.ypys.generating.dungeon.topology;
+import ua.dp.isd.ypys.entities.IMaze;
+
+public interface IMazeFactory
+{
+	IMaze createMaze(int width, int height);
+}
