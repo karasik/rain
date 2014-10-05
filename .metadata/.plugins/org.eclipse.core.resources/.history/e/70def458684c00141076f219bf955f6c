@@ -1,0 +1,19 @@
+package ua.dp.isd.ypys.generating.dungeon;
+import java.util.Collection;
+
+public interface IAutomata
+{
+
+	void run(int iterations);
+
+	boolean[][] getState();
+
+	int getWidth();
+
+	int getHeight();
+
+	Collection<Integer> getSurvival();
+
+	Collection<Integer> getBorn();
+
+}

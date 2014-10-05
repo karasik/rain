@@ -1,0 +1,39 @@
+package ua.dp.isd.ypys.generating.dungeon;
+
+import ua.dp.isd.ypys.entities.CellType;
+import ua.dp.isd.ypys.entities.IMaze;
+import ua.dp.isd.ypys.entities.StandardMaze;
+
+public class MazeAutomataFactory implements IMazeFactory
+{
+
+	@Override
+	public IMaze createMaze(int width, int height)
+	{
+		IAutomata automata = new MazeAutomata(width, height);
+		automata.run(1000);
+		boolean[][] state = automata.getState();
+		CellType[][] board = createBoard(width, height, state);
+		IMaze maze = new StandardMaze(width, height, board);
+		return maze;
+	}
+
+	private CellType[][] createBoard(int width, int height, boolean[][] state)
+	{
+		CellType[][] board = new CellType[height][width];
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				board[i][j] = toCell(state[i][j]);
+			}
+		}
+		return board;
+	}
+
+	private CellType toCell(boolean b)
+	{
+		return b ? CellType.WALL : CellType.FLOOR;
+	}
+
+}

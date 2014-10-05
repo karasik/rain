@@ -1,0 +1,107 @@
+package ua.dp.isd.ypys.generating.dungeon;
+import java.util.Collection;
+
+public class AbstractAutomata implements IAutomata
+{
+	private int width;
+	private int height;
+	private boolean[][] state;
+
+	private Collection<Integer> survival;
+	private Collection<Integer> born;
+
+	private static int[][] directions = new int[][] { { -1, 0 }, { 0, -1 },
+			{ 1, 0 }, { 0, 1 }, { -1, -1 }, { -1, 1 }, { 1, -1 }, { 1, 1 } };
+
+	public AbstractAutomata(int width, int height,
+			boolean[][] startingState, Collection<Integer> survival,
+			Collection<Integer> born)
+	{
+		this.width = width;
+		this.height = height;
+		this.state = startingState;
+		this.survival = survival;
+		this.born = born;
+	}
+
+	@Override
+	public void run(int iterations)
+	{
+		boolean[][] newState = new boolean[height][width];
+		for (int iteration = 0; iteration < iterations; iteration++)
+		{
+			nextStep(newState);
+			boolean[][] t = state;
+			state = newState;
+			newState = t;
+		}
+	}
+
+	private void nextStep(boolean[][] newState)
+	{
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				int aliveNeighbors = aliveNeighbors(i, j);
+				newState[i][j] = state[i][j];
+				if (state[i][j])
+				{
+					if (!survival.contains(aliveNeighbors)) newState[i][j] = false;
+				}
+				else
+				{
+					if (born.contains(aliveNeighbors)) newState[i][j] = true;
+				}
+			}
+		}
+	}
+
+	private int aliveNeighbors(int i, int j)
+	{
+		int total = 0;
+		for (int[] direction : directions)
+		{
+			int newI = i + direction[0], newJ = j + direction[1];
+			if (newI >= 0 && newI < height && newJ >= 0 && newJ < width
+					&& state[newI][newJ]) total++;
+
+		}
+		return total;
+	}
+
+	@Override
+	public boolean[][] getState()
+	{
+		return state;
+	}
+
+	@Override
+	public int getWidth()
+	{
+		return width;
+	}
+
+	@Override
+	public int getHeight()
+	{
+		return height;
+	}
+
+	@Override
+	public Collection<Integer> getSurvival()
+	{
+		return survival;
+	}
+
+	@Override
+	public Collection<Integer> getBorn()
+	{
+		return born;
+	}
+
+	protected void setState(boolean[][] state)
+	{
+		this.state = state;
+	}
+}

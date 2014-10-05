@@ -1,0 +1,24 @@
+package ua.dp.isd.ypys.generating.dungeon.topology;
+
+import ua.dp.isd.ypys.entities.CellType;
+
+public class AbstractMazeFactory
+{
+	private CellType[][] createBoard(int width, int height, boolean[][] state)
+	{
+		CellType[][] board = new CellType[height][width];
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				board[i][j] = toCell(state[i][j]);
+			}
+		}
+		return board;
+	}
+
+	private CellType toCell(boolean b)
+	{
+		return b ? CellType.WALL : CellType.FLOOR;
+	}
+}

@@ -1,0 +1,6 @@
+package ua.dp.isd.ypys.commons;
+
+public class EnumWithLabel
+{
+	
+}

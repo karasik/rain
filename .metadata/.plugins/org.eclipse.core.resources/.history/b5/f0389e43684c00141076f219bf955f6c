@@ -1,0 +1,47 @@
+package ua.dp.isd.ypys.commons;
+import java.util.Arrays;
+import java.util.Random;
+
+public class RandomUtils
+{
+	// Prevent instantiation.
+	private RandomUtils()
+	{
+	}
+
+	public static boolean[][] generateBooleanArray(int n, int m)
+	{
+		Random r = new Random();
+		boolean[][] result = new boolean[n][m];
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < m; j++)
+			{
+				result[i][j] = r.nextBoolean();
+			}
+		}
+		return result;
+	}
+	
+	public static boolean[][] generateBooleanArray(int n, int m, int i1, int i2, int j1, int j2)
+	{
+		Random r = new Random();
+		boolean[][] result = new boolean[n][m];
+		for (int i = i1; i < i2; i++)
+		{
+			for (int j = j1; j < j2; j++)
+			{
+				result[i][j] = r.nextBoolean();
+			}
+		}
+		return result;
+	}
+
+	public static boolean[][] trueBooleanArray(int n, int m)
+	{
+		boolean[][] result = new boolean[n][m];
+		for (boolean[] u : result)
+			Arrays.fill(u, true);
+		return result;
+	}
+}

@@ -1,0 +1,6 @@
+package ua.dp.isd.ypys.generating.dungeon.topology;
+
+public class AbstractMazeFactory
+{
+
+}

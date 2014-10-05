@@ -1,0 +1,22 @@
+package ua.dp.isd.ypys.entities;
+
+import ua.dp.isd.ypys.commons.EnumWithCode;
+
+
+public enum CellType implements EnumWithCode<String>, EnumWithLabel<String>
+{
+	FLOOR(0, " "), WALL(1, "#");
+
+	private String code;
+
+	private CellType(String code)
+	{
+		this.code = code;
+	}
+
+	public String getCode()
+	{
+		return code;
+	}
+
+}

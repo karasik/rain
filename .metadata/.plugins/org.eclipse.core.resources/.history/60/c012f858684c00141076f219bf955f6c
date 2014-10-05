@@ -1,0 +1,20 @@
+package ua.dp.isd.ypys.generating.dungeon;
+
+import java.util.Collection;
+
+import ua.dp.isd.ypys.commons.CollectionUtils;
+import ua.dp.isd.ypys.commons.RandomUtils;
+
+public class MazeAutomata extends AbstractAutomata
+{
+
+	private static Collection<Integer> survival = CollectionUtils.newList(1, 2,
+			3, 4);
+	private static Collection<Integer> born = CollectionUtils.newList(3);
+
+	public MazeAutomata(int width, int height)
+	{
+		super(width, height, RandomUtils.generateBooleanArray(height, width),
+				survival, born);
+	}
+}

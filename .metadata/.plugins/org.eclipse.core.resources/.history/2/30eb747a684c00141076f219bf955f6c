@@ -1,0 +1,60 @@
+package ua.dp.isd.ypys.entities;
+
+public class AbstractMaze implements IMaze
+{
+	private int width;
+	private int height;
+
+	private CellType[][] board;
+
+	public AbstractMaze(int width, int heidht, CellType[][] board)
+	{
+		this.width = width;
+		this.height = heidht;
+		this.board = board;
+	}
+
+	public CellType[][] getBoard()
+	{
+		return board;
+	}
+
+	public void setBoard(CellType[][] board)
+	{
+		this.board = board;
+	}
+
+	public int getHeight()
+	{
+		return height;
+	}
+
+	public void setHeight(int heidht)
+	{
+		this.height = heidht;
+	}
+
+	public int getWidth()
+	{
+		return width;
+	}
+
+	public void setWidth(int width)
+	{
+		this.width = width;
+	}
+
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				sb.append(board[i][j].getCode());
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
+}

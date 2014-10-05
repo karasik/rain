@@ -1,0 +1,15 @@
+package ua.dp.isd.ypys.generating.dungeon;
+import java.util.List;
+
+public class StandardAutomata extends AbstractAutomata implements
+		IAutomata
+{
+
+	public StandardAutomata(int width, int height,
+			boolean[][] startingState, List<Integer> stayAlive,
+			List<Integer> born)
+	{
+		super(width, height, startingState, stayAlive, born);
+	}
+
+}
